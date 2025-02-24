@@ -1,0 +1,151 @@
+{% comment %}
+  Title: ComicHive Header
+  Description: Replaces completly the main header with this custom one
+{% endcomment %}
+
+<style>
+  li.comichive-menuitem-main {
+    font-family: 'Bebas Neue', serif;
+    font-size: 18px;
+  }
+
+  li.comichive-menuitem-secondary a {
+    font-size: 15px;
+  }
+</style>
+
+<header class="bg-black px-[40px] py-[5px] flex justify-center">
+  <div class="flex justify-between items-center w-full max-w-[1300px]">
+    <a href="{{ routes.root_url }}">
+      <img
+        src="{{ settings.logo | image_url }}"
+        alt="{{ shop.name }}"
+        class="w-[120px] h-[60px]"
+        height="1000"
+        width="1000"
+        loading="eager"
+      >
+    </a>
+
+    <ul class="flex justify-center space-x-10">
+      {% for link in section.settings.menu.links %}
+        <li class="comichive-menuitem-main">
+          <a href="{{ link.url }}" class="text-white hover:underline">
+            {{ link.title }}
+          </a>
+
+          {% if link.links != blank %}
+            <span
+              id="toggleDropdown"
+              class="text-[#EDC032] cursor-pointer text-[12px] inline-block transition-transform duration-300 -translate-y-0.5 hover:translate-y-0"
+              >&nbsp;▼</span
+            >
+            <ul id="dropdownMenu" class="absolute bg-black pl-[10px] py-[2px] pr-[20px] ml-[-5px] hidden">
+              {% for child in link.links %}
+                <li class="comichive-menuitem-secondary">
+                  <a href="{{ child.url }}" class="text-white hover:underline">
+                    {{ child.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="flex gap-6">
+      <ul class="flex gap-6 items-center">
+        <li class="max-h-8"> 
+          {% render 'header-search', input_id: 'Search-In-Modal' %}
+        </li>
+        <li class="text-[#EDC032]">
+          <a href="{{ routes.cart_url }}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-basket2 w-7 h-7"
+              viewBox="0 0 16 16"
+            >
+              <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"/>
+              <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"/>
+            </svg>
+          </a>
+        </li>
+        <li class="text-[#EDC032]">
+          <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-person-fill w-8 h-8"
+              viewBox="0 0 16 16"
+            >
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      {% render 'comichive-button',
+        text: section.settings.button_text,
+        link: section.settings.button_link,
+        type: 'primary',
+        background: 'dark'
+      %}
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('toggleDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    toggleButton.addEventListener('click', function (event) {
+      // Toggle visibility
+      dropdownMenu.classList.toggle('hidden');
+
+      // Close if clicking outside
+      document.addEventListener('click', function closeDropdown(e) {
+        if (!toggleButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.classList.add('hidden');
+          document.removeEventListener('click', closeDropdown);
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ComicHive Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Select a Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ComicHive Header"
+    }
+  ]
+}
+{% endschema %}
