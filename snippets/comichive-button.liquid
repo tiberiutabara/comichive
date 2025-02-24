@@ -1,0 +1,153 @@
+{% comment %}
+ Title: Button snippet ComicHive
+
+ Example:
+    {% render 'comichive-button', {
+        text: 'button text',
+        link: 'http://www.google.com',
+        type: 'primary',
+        background: 'light'
+    } %}
+
+Note: The type can be 'primary' or 'secondary' and background can be 'light' or 'dark'
+
+{% endcomment %}
+
+<style>
+
+/* Primary styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+button.comichive-button{
+
+    /* Font options */
+    font-family: "Roboto Condensed", serif;
+    font-weight: 1000;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    
+    /* Sizes styles */
+    border: 1px solid;
+    padding: 6px 24px;
+
+    /* Colors */
+    color: #000000;
+    background: #EDC032;
+
+    /* Box shadow */
+    box-shadow: var(--x-offset) var(--y-offset) var(--blur-radius) var(--spread-radius) var(--shadow-color);
+    --x-offset: 2px;
+    --y-offset: 4px;
+    --blur-radius: 0px;
+    --spread-radius: 0px;
+    --shadow-color: #000000;
+
+}
+
+a.comichive-button-link{
+    display: inline-block;
+    padding-right: 4px;
+    padding-bottom: 5px
+}
+
+button.comichive-button:hover{
+
+    cursor: pointer;
+
+    /* Colors */
+    background: #FFFFFF;
+
+    /* Box shadow */
+    --x-offset: 4px;
+    --y-offset: 5px;
+
+}
+
+/* Secondary styles */
+button.comichive-button.comichive-button--secondary{
+
+    /* Colors */
+    background: #ffffff;
+
+    /* Box shadow */
+    --shadow-color: #737373;
+
+}
+
+button.comichive-button.comichive-button--secondary:hover{
+
+    /* Colors */
+    background: #EDC032;
+
+    /* Box shadow */
+    --x-offset: 4px;
+    --y-offset: 5px;
+
+}
+
+/* Primary styles -dark */
+button.comichive-button--dark{
+
+    border-color: #FFF;
+    --shadow-color: #FFF;
+
+}
+
+button.comichive-button--dark:hover{
+
+    /* Colors */
+    color: #FFFFFF;
+    background: #000000;
+
+    /* Box shadow */
+    --x-offset: 3px;
+    --y-offset: 5px;
+    
+}
+
+/* Primary styles -dark */
+button.comichive-button--dark{
+
+    border-color: #FFFFFF;
+    --shadow-color: #FFFFFF;
+
+}
+
+button.comichive-button--dark:hover{
+
+    /* Colors */
+    color: #FFFFFF;
+    background: #000000;
+
+    /* Box shadow */
+    --x-offset: 4px;
+    --y-offset: 5px;
+    
+}
+
+/* Secondary styles -dark */
+button.comichive-button--secondary.comichive-button--dark{
+
+    border-color: #737373;
+    --shadow-color: #737373;
+
+}
+
+button.comichive-button--secondary.comichive-button--dark:hover{
+
+    /* Colors */
+    color: #FFFFFF;
+    background: #000000;
+
+    /* Box shadow */
+    --x-offset: 4px;
+    --y-offset: 5px;
+    
+}
+
+</style>
+
+<a href="{{ link }}" class="comichive-button-link">
+    <button class="comichive-button comichive-button--{{ type }} comichive-button--{{ background }}">{{ text }}</button>
+</a>
