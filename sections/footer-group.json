@@ -11,8 +11,18 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "comichive_footer_pTCgRB": {
+      "type": "comichive-footer",
+      "settings": {
+        "button_text": "Join newsletter",
+        "button_link": "https://www.google.com",
+        "pages_menu": "menu-pages",
+        "shop_menu": "shop-menu"
+      }
+    },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -30,6 +40,7 @@
     }
   },
   "order": [
+    "comichive_footer_pTCgRB",
     "footer"
   ]
 }
