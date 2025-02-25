@@ -24,15 +24,22 @@
   .comichive-footer-menu li {
     font-size: 14px;
   }
+
+  @media (max-width: 1024px){
+    span.footer-logo {
+        font-size: 88px;
+        line-height: 88px;
+      }
+  }
 </style>
 
-<footer class="h-[330px] bg-black">
+<footer class="lg:h-[330px] bg-black">
   <span class="footer-logo">Comic hive</span>
 
-  <div class="flex items-end h-[330px]">
-    <div class="flex flex-col w-[1000px] max-w-[1000px] mx-auto max-lg:px-[40px]">
-      <div class="flex justify-between items-end">
-        <span class="w-[250px]">&nbsp;</span>
+  <div class="flex items-end lg:h-[330px] max-lg:pt-[120px]">
+    <div class="flex flex-col w-[1000px] max-w-[1000px] mx-auto max-lg:px-[10px] max-lg:w-[320px]">
+      <div class="flex justify-between items-end max-lg:flex-col-reverse max-lg:items-center">
+        <span class="w-[250px] max-lg:hidden">&nbsp;</span>
 
         {% render 'comichive-button',
           text: section.settings.button_text,
@@ -41,7 +48,7 @@
           background: 'dark'
         %}
 
-        <div class="flex w-[250px] justify-between comichive-footer-menu">
+        <div class="flex w-[250px] max-lg:w-full justify-between comichive-footer-menu lg:pr-2 max-lg:mb-[60px] max-lg:pl-4 max-lg:pr-10">
           <div>
             <h4 class="!text-white comichive-menuitem-footer">Pages</h4>
             <ul class="">

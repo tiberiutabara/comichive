@@ -1,9 +1,12 @@
-html {
-    overflow-x: visible;
-}
-
-body {
+body{
     overflow-x: hidden; 
     position: relative;
     width: 100%;
+    padding-top: 70px;
+}
+
+@media (max-width: 1024px) {
+    body{
+        padding-top: 51px;
+    } 
 }
