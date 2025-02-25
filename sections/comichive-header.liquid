@@ -12,10 +12,21 @@
   li.comichive-menuitem-secondary a {
     font-size: 15px;
   }
+
+  #mobile-dropdown {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 48px); 
+    overflow-y: hidden;
+    z-index: 50;
+  }
+  
 </style>
 
 {% comment %} Desktop Header {% endcomment %}
-<header class="bg-black px-[40px] py-[5px] flex justify-center max-lg:hidden">
+<header class="bg-black px-[40px] py-[5px] flex justify-center max-lg:hidden fixed top-0 left-0 w-full z-50">
   <div class="flex justify-between items-center w-full max-w-[1300px]">
     <a href="{{ routes.root_url }}">
       <img
@@ -102,7 +113,7 @@
 </header>
 
 {% comment %} Mobile Header {% endcomment %}
-<header class="bg-black px-[15px] py-[3px] flex justify-between items-center lg:hidden">
+<header class="bg-black px-[15px] py-[3px] flex justify-between items-center lg:hidden fixed top-0 left-0 w-full z-50">
   <div id="menu-toggle" class="cursor-pointer">
     <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list h-10 w-10 text-white opacity-100 transition-opacity duration-300" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
