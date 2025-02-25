@@ -14,11 +14,12 @@
   }
 </style>
 
-<header class="bg-black px-[40px] py-[5px] flex justify-center">
+{% comment %} Desktop Header {% endcomment %}
+<header class="bg-black px-[40px] py-[5px] flex justify-center max-lg:hidden">
   <div class="flex justify-between items-center w-full max-w-[1300px]">
     <a href="{{ routes.root_url }}">
       <img
-        src="{{ settings.logo | image_url }}"
+        src="{{ settings.logo | image_url: width: 1000 }}"
         alt="{{ shop.name }}"
         class="w-[120px] h-[60px]"
         height="1000"
@@ -100,7 +101,124 @@
   </div>
 </header>
 
+{% comment %} Mobile Header {% endcomment %}
+<header class="bg-black px-[15px] py-[3px] flex justify-between items-center lg:hidden">
+  <div id="menu-toggle" class="cursor-pointer">
+    <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list h-10 w-10 text-white opacity-100 transition-opacity duration-300" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+    </svg>
+
+    <svg id="menu-close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg h-8 w-8 text-white hidden transition-opacity duration-300" viewBox="0 0 16 16">
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+    </svg>
+  </div>
+
+  <a href="{{ routes.root_url }}">
+    <img
+      src="{{ settings.logo | image_url: width: 1000 }}"
+      alt="{{ shop.name }}"
+      class="w-[91px] h-[45px]"
+      height="1000"
+      width="1000"
+      loading="eager"
+    >
+  </a>
+
+  <a id="cart-icon" href="{{ routes.cart_url }}" class="text-[#EDC032] transition-opacity duration-300">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-basket2 w-8 h-8"
+      viewBox="0 0 16 16"
+    >
+      <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"/>
+      <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"/>
+    </svg>
+  </a>
+
+  <p id="toggle-paragraph" class="hidden">xx</p>
+</header>
+
+{% comment %} Mobile Dropdown {% endcomment %}
+<div id="mobile-dropdown" class="bg-black h-screen w-full hidden opacity-0 transition-opacity duration-300">
+
+  <ul class="flex gap-6 items-center justify-center py-[20px]">
+    <li class="max-h-8"> 
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
+    </li>
+    <li class="text-[#EDC032]">
+      <a href="{{ routes.cart_url }}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-basket2 w-7 h-7"
+          viewBox="0 0 16 16"
+        >
+          <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"/>
+          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6z"/>
+        </svg>
+      </a>
+    </li>
+    <li class="text-[#EDC032]">
+      <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-person-fill w-8 h-8"
+          viewBox="0 0 16 16"
+        >
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="flex justify-center items-center flex-col">
+    {% for link in section.settings.menu.links %}
+      <li class="comichive-menuitem-main">
+        <a href="{{ link.url }}" class="text-white hover:underline">
+          {{ link.title }}
+        </a>
+
+        {% if link.links != blank %}
+          <span
+            id="toggleDropdownMobile"
+            class="text-[#EDC032] cursor-pointer text-[12px] inline-block transition-transform duration-300 -translate-y-0.5 hover:translate-y-0"
+            >&nbsp;▼</span
+          >
+          <ul id="dropdownMenuMobile" class="text-center mb-2 border !border-b-[#FFFFFF]/30 hidden">
+            {% for child in link.links %}
+              <li class="comichive-menuitem-secondary">
+                <a href="{{ child.url }}" class="text-white hover:underline">
+                  {{ child.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="flex justify-center pt-[20px]">
+    {% render 'comichive-button',
+      text: section.settings.button_text,
+      link: section.settings.button_link,
+      type: 'primary',
+      background: 'dark'
+    %}
+  </div>
+
+</div>
+
 <script>
+  // Desktop dropdown
   document.addEventListener('DOMContentLoaded', function () {
     const toggleButton = document.getElementById('toggleDropdown');
     const dropdownMenu = document.getElementById('dropdownMenu');
@@ -118,6 +236,44 @@
       });
     });
   });
+
+  // Mobile
+  document.getElementById('menu-toggle').addEventListener('click', function () {
+    let menuOpen = document.getElementById('menu-open');
+    let menuClose = document.getElementById('menu-close');
+    let dropdown = document.getElementById('mobile-dropdown');
+    let cartIcon = document.getElementById('cart-icon');
+    let toggleParagraph = document.getElementById('toggle-paragraph');
+    
+    menuOpen.classList.toggle('hidden');
+    menuClose.classList.toggle('hidden');
+    dropdown.classList.toggle('hidden');
+    dropdown.classList.toggle('opacity-100');
+    dropdown.classList.toggle('opacity-0');
+    cartIcon.classList.toggle('hidden');
+    toggleParagraph.classList.toggle('hidden');
+  });
+
+ // Mobile submenu dropdown
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButtonMobile = document.getElementById('toggleDropdownMobile');
+  const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
+
+  if (toggleButtonMobile && dropdownMenuMobile) {
+    toggleButtonMobile.addEventListener('click', function (event) {
+      // Toggle visibility
+      dropdownMenuMobile.classList.toggle('hidden');
+
+      // Close if clicking outside
+      document.addEventListener('click', function closeDropdown(e) {
+        if (!toggleButtonMobile.contains(e.target) && !dropdownMenuMobile.contains(e.target)) {
+          dropdownMenuMobile.classList.add('hidden');
+          document.removeEventListener('click', closeDropdown);
+        }
+      });
+    });
+  }
+});
 </script>
 
 {% schema %}
@@ -134,7 +290,7 @@
       "type": "text",
       "id": "button_text",
       "label": "Button Text",
-      "default": "Shop Now"
+      "default": "Header Button"
     },
     {
       "type": "url",
