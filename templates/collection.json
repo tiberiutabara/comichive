@@ -9,8 +9,15 @@
  */
 {
   "sections": {
+    "comichive_hero_DMN3Ry": {
+      "type": "comichive-hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -39,6 +46,7 @@
     }
   },
   "order": [
+    "comichive_hero_DMN3Ry",
     "banner",
     "product-grid"
   ]
