@@ -9,22 +9,15 @@
  */
 {
   "sections": {
+    "comichive_hero_iR3pw9": {
+      "type": "comichive-hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+      }
+    },
     "main": {
       "type": "main-article",
       "blocks": {
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {
-            "image_height": "adapt"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "blog_show_date": true,
-            "blog_show_author": false
-          }
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -34,18 +27,24 @@
         "content": {
           "type": "content",
           "settings": {}
+        },
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
         }
       },
       "block_order": [
-        "featured_image",
-        "title",
         "share",
-        "content"
+        "content",
+        "featured_image"
       ],
       "settings": {}
     }
   },
   "order": [
+    "comichive_hero_iR3pw9",
     "main"
   ]
 }
