@@ -40,7 +40,25 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+
+  <style>
+    .card__information{
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+
+    .card__information h2{
+      margin-bottom: -6px;
+    }
+
+    .comichive-product-hover:hover img{
+      filter: brightness(20%) !important;
+    }
+  
+  </style>
+
+
+  <div class="comichive-card-hover-parent card-wrapper product-card-wrapper">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -59,7 +77,7 @@
       >
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
-            <div class="media media--transparent media--hover-effect">
+            <div class="media media--transparent">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
                 srcset="
@@ -81,6 +99,14 @@
                 width="{{ card_product.featured_media.width }}"
                 height="{{ card_product.featured_media.height }}"
               >
+                <div class="comichive-card-hover-child !bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.9)_100%)] hidden items-center justify-center">
+                  {% render 'comichive-button', 
+                    text: 'Buy now',
+                    link: '#',
+                    type: 'primary',
+                    background: 'light'
+                 %}
+                </div>
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
 
               {%- if card_product.media[1] != null and show_secondary_image -%}
@@ -108,7 +134,7 @@
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
-            <h3
+            <h2
               class="card__heading"
               {% if card_product.featured_media == null and settings.card_style == 'standard' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
@@ -122,7 +148,7 @@
               >
                 {{ card_product.title | escape }}
               </a>
-            </h3>
+            </h2>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
@@ -145,7 +171,7 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3
+          <h2
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
@@ -159,8 +185,8 @@
             >
               {{ card_product.title | escape }}
             </a>
-          </h3>
-          <div class="card-information">
+          </h2>
+          <div class="card-information text-teal-400">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
@@ -510,7 +536,7 @@
                       </div>
                       <div class="quick-add-modal__content-info--bulk-details large-up-hide">
                         <a href="{{ card_product.url }}" class="full-unstyled-link">
-                          <h3>{{ card_product.title | escape }}</h3>
+                          <h2>{{ card_product.title | escape }}</h2>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
                         {%- if card_product.quantity_price_breaks_configured? -%}
@@ -523,9 +549,9 @@
                     <div>
                       <div class="quick-add-modal__content-info--bulk-details small-hide medium-hide">
                         <a href="{{ card_product.url }}" class="full-unstyled-link">
-                          <h3 class="h2">
+                          <h2 class="h2">
                             {{ card_product.title | escape }}
-                          </h3>
+                          </h2>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
                         {%- if card_product.quantity_price_breaks_configured? -%}
@@ -576,7 +602,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -605,11 +631,11 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
+          <h2 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
-          </h3>
+          </h2>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -622,3 +648,24 @@
     </div>
   </div>
 {%- endif -%}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".comichive-card-hover-parent").forEach((parent) => {
+      const child = parent.querySelector(".comichive-card-hover-child");
+  
+      if (child) {
+        parent.addEventListener("mouseenter", () => {
+          child.classList.add("!flex");
+          child.classList.remove("hidden");
+        });
+  
+        parent.addEventListener("mouseleave", () => {
+          child.classList.add("hidden");
+          child.classList.remove("!flex");
+        });
+      }
+    });
+  });
+  
+</script>

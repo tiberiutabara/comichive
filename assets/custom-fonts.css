@@ -8,15 +8,17 @@
 */
 
 h1{
-    font-family: "Bebas Neue", serif;
-    font-size: 32px;
+    font-family: "Bebas Neue", serif !important;
+    font-size: 32px !important;
     line-height: 38px;
+    text-transform: uppercase;
 }
 
 h2{
-    font-family: "Bebas Neue", serif;
-    font-size: 24px;
+    font-family: "Bebas Neue", serif !important;
+    font-size: 24px !important;
     line-height: 29px;
+    text-transform: uppercase;
 }
 
 p{
@@ -26,12 +28,12 @@ p{
 
 @media (max-width: 768px) {
     h1{
-        font-size: 24px;
+        font-size: 24px !important;
         line-height: 29px;
     }
     
     h2{
-        font-size: 18px;
+        font-size: 18px !important;
         line-height: 22px;
     }
 }
