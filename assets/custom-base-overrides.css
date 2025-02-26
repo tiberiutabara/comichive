@@ -37,10 +37,6 @@ body{
         padding: 0 30px !important;
     }
 
-    .collection{
-        padding-right: 30px;
-    }
-
     .collection ul{
         column-gap: 20px !important;
     }
