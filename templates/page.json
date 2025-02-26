@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "comichive_hero_R4wkaM": {
+      "type": "comichive-hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -18,6 +24,7 @@
     }
   },
   "order": [
+    "comichive_hero_R4wkaM",
     "main"
   ]
 }
