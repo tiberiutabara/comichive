@@ -9,10 +9,16 @@
  */
 {
   "sections": {
+    "comichive_hero_T9T8zA": {
+      "type": "comichive-hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+      }
+    },
     "main": {
       "type": "main-list-collections",
       "settings": {
-        "title": "Collections",
+        "title": "",
         "sort": "alphabetical",
         "image_ratio": "adapt",
         "columns_desktop": 3,
@@ -21,6 +27,7 @@
     }
   },
   "order": [
+    "comichive_hero_T9T8zA",
     "main"
   ]
 }
