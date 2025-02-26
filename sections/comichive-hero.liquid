@@ -1,0 +1,52 @@
+{% comment %}
+ Title: ComicHive Hero
+ Description: This will be displayed on most pages, except homepage and product page.
+{% endcomment %}
+
+{% style %}
+  .comichive-hero{
+    background-image: url('{{ section.settings.hero_image | image_url }}');
+    background-size: cover;
+  }
+  
+  .comichive-hero h1{
+    color: #FFFFFF;
+    z-index: 1;
+  }
+{% endstyle %}
+
+<section class="comichive-hero min-h-[280px] flex w-full justify-center items-center">
+
+  <div class="absolute bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.9)_100%)] w-full h-[280px]">&nbsp;</div>
+
+  {% if collection %}
+    <h1>{{ collection.title }}</h1>
+  {% elsif page %}
+    <h1>{{ page.title }}</h1>
+  {% elsif article %}
+    <h1>{{ article.title }}</h1>
+  {% elsif blog %}
+    <h1>{{ blog.title }}</h1>
+  {% elsif template == 'list-collections' %}
+    <h1>Collections</h1>
+  {% endif %}
+
+</section>
+
+{% schema %}
+{
+  "name": "ComicHive Hero",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero Image"
+    }
+  ],
+  "presets": [
+    {
+        "name": "ComicHive Hero"
+    }
+  ]
+}
+{% endschema %}
