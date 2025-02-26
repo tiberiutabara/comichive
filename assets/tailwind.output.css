@@ -501,8 +501,17 @@
   .text-center {
     text-align: center;
   }
+  .\!text-\[14px\] {
+    font-size: 14px !important;
+  }
   .text-\[12px\] {
     font-size: 12px;
+  }
+  .text-\[14px\] {
+    font-size: 14px;
+  }
+  .text-\[20px\] {
+    font-size: 20px;
   }
   .\!text-teal-400 {
     color: var(--color-teal-400) !important;
