@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "comichive_hero_BKwHAM": {
+      "type": "comichive-hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+      }
+    },
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
@@ -19,30 +25,29 @@
     },
     "cart-footer": {
       "type": "main-cart-footer",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 20,
-        "padding_bottom": 40
-      },
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
         "subtotal",
         "buttons"
-      ]
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
+    "comichive_hero_BKwHAM",
     "cart-items",
     "cart-footer"
   ]
