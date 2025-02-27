@@ -15,14 +15,6 @@
         "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
     "comichive_textsection_yYHQNK": {
       "type": "comichive-textsection",
       "settings": {
@@ -39,7 +31,6 @@
   },
   "order": [
     "comichive_hero_R4wkaM",
-    "main",
     "comichive_textsection_yYHQNK"
   ]
 }
