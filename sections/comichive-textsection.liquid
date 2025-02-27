@@ -1,0 +1,96 @@
+{% comment %}
+ Title: ComicHive Text Section
+ Description: A section used on various pages: title, description, image, up to 2 buttons
+{% endcomment %}
+
+{% style %}
+
+{% endstyle %}
+
+<section class="page-width flex justify-between items-center !my-[100px] max-lg:flex-col-reverse max-lg:gap-[30px] max-lg:!my-[40px]">
+
+    <div class="lg:mr-[40px] flex flex-col gap-[30px] lg:gap-[40px]">
+
+        <h1>{{ section.settings.section_title }}</h1>
+
+        <div>
+            {{ section.settings.section_description }}
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10 ">
+            {% render 'comichive-button', 
+                text: section.settings.section_primarybt_text,
+                link: section.settings.section_primarybt_url,
+                type: 'primary',
+                background: 'light'
+            %}
+
+            {% if section.settings.section_secondarybt_toggle == true %}
+                {% render 'comichive-button', 
+                    text: section.settings.section_secondarybt_text,
+                    link: section.settings.section_secondarybt_url,
+                    type: 'secondary',
+                    background: 'light'
+                %}
+            {% endif %}
+        </div>
+        
+    </div>
+
+        <img src="{{ section.settings.section_image | image_url: width: 1000 }}" alt="{{ section.settings.section_title }}" width="1000" height="1000" loading="lazy" class="h-[100vh] max-h-[350px] max-sm:max-h-[300px] w-auto">
+
+</section>
+
+{% schema %}
+{
+  "name": "ComicHive Text Section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "section_title",
+        "label": "Text Section Title"
+    },
+    {
+        "type": "richtext",
+        "id": "section_description",
+        "label": "Text Section Description"
+    },
+    {
+        "type": "image_picker",
+        "id": "section_image",
+        "label": "Text Section Image"
+    },
+    {
+        "type": "text",
+        "id": "section_primarybt_text",
+        "label": "Text Section Primary Button Text"
+    },
+    {
+        "type": "url",
+        "id": "section_primarybt_url",
+        "label": "Text Section Primary Button Url"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_secondarybt_toggle",
+        "label": "Text Section Secondary Button Toggle",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "section_secondarybt_text",
+        "label": "Text Section Secondary Button Text"
+    },
+    {
+        "type": "url",
+        "id": "section_secondarybt_url",
+        "label": "Text Section Secondary Button Url"
+    }
+  ],
+  "presets": [
+    {
+        "name": "ComicHive Text Section"
+    }
+  ]
+}
+{% endschema %}

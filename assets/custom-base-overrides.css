@@ -3,18 +3,6 @@ body{
     position: relative;
     width: 100%;
     padding-top: 70px;
-
-    background-image: url('/assets/bg-right-comichive.png'), url('/assets/bg-left-comichive.png') !important;
-    background-repeat: no-repeat ;
-    background-position: left 0, right 0 ;
-    background-size: auto;
-}
-
-.color-scheme-1{
-    background-image: url('/assets/bg-right-comichive.png'), url('/assets/bg-left-comichive.png') !important;
-    background-repeat: no-repeat ;
-    background-position: left 0, right 0 ;
-    background-size: auto;
 }
 
 .page-width{
