@@ -17,14 +17,29 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "comichive_textsection_yYHQNK": {
+      "type": "comichive-textsection",
+      "settings": {
+        "section_title": "Where passion meets panels",
+        "section_description": "<p>At Comic Hive, we believe that every comic book tells a story beyond its pages. Whether you’re a lifelong collector, a casual reader, or just diving into the world of superheroes and graphic novels, we’re here to fuel your passion. Our mission is to provide an extensive collection of comics, manga, and collectibles, all curated with care and delivered with enthusiasm. More than just a store, Comic Hive is a community where fans can connect, discover, and celebrate the art of storytelling.</p>",
+        "section_image": "shopify://shop_images/batman.png",
+        "section_primarybt_text": "See store",
+        "section_primarybt_url": "shopify://collections/all",
+        "section_secondarybt_toggle": false,
+        "section_secondarybt_text": "",
+        "section_secondarybt_url": ""
       }
     }
   },
   "order": [
     "comichive_hero_R4wkaM",
-    "main"
+    "main",
+    "comichive_textsection_yYHQNK"
   ]
 }
