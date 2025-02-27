@@ -75,10 +75,24 @@
         "padding_top": 40,
         "padding_bottom": 0
       }
+    },
+    "comichive_textsection_NfGRjW": {
+      "type": "comichive-textsection",
+      "settings": {
+        "section_title": "New comics out every second week",
+        "section_description": "<p>We're committed to keeping your collection up-to-date with fresh releases every two weeks. From the latest superhero sagas to gripping graphic novels and unique indie titles, we have something for every kind of reader. Our selection is constantly refreshed, ensuring you're always in the know and never miss the next big release. Visit us regularly to discover the latest comics, handpicked and delivered straight to your shelf.    </p>",
+        "section_image": "shopify://shop_images/wolverine.png",
+        "section_primarybt_text": "See all deals",
+        "section_primarybt_url": "shopify://collections/all",
+        "section_secondarybt_toggle": true,
+        "section_secondarybt_text": "Read about us",
+        "section_secondarybt_url": "shopify://pages/about"
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "comichive_textsection_NfGRjW"
   ]
 }
