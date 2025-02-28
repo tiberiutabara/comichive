@@ -4,29 +4,46 @@
 {% endcomment %}
 
 <style>
-    .comichive-articles{
+    .comichive-articles a{
+        display: block;
+        color: #FC582D;
+        text-decoration: underline;
+        font-size: 14px;
+        margin-top: -4px;
+    }
+
+    .comichive-articles span{
+        font-size: 10px;
+        background: #000000;
+        color: #FFFFFF;
+        padding: 3px 10px;
+        text-transform: uppercase;
+
+        position: absolute;
     }
 </style>
 
 {% assign blogdata = blogs.news %}
 
-<section class="page-width">
-  <h2>{{ section.settings.articles_title }}</h2>
+<section class="page-width !my-[40px]">
+  <h1 class="mb-[10px]">{{ section.settings.articles_title }}</h1>
 
-  <div class="comichive-articles flex max-w-[100%]">
+  <div class="comichive-articles flex max-lg:flex-wrap gap-[20px]">
     {% if blogdata.articles.size > 0 %}
       {% for article in blogdata.articles limit: 3 %}
-        <span>{{ article.published_at | date: '%d %b %Y' }}</span>
-        <img
-          src="{{ article.image | image_url: width: 1000 }}"
-          alt="{{ article.title }}"
-          width="500"
-          height="500"
-          loading="lazy"
-          class="max-w-full"
-        >
-        <h3>{{ article.title }}</h3>
-        <a href="{{ article.url }}">Read more</a>
+        <div>
+            <span>{{ article.published_at | date: '%d %b %Y' }}</span>
+            <img
+              src="{{ article.image | image_url: width: 1000 }}"
+              alt="{{ article.title }}"
+              width="500"
+              height="500"
+              loading="lazy"
+              class="max-h-[180px] max-lg:max-h-[220px] max-lg:max-w-[400px]  max-sm:max-w-full object-cover mb-[5px]"
+            >
+            <h2>{{ article.title }}</h2>
+            <a href="{{ article.url }}">Read more</a>
+        </div>
       {% endfor %}
     {% else %}
       <p>No articles found.</p>
