@@ -1,0 +1,53 @@
+{% comment %}
+  Title: ComicHive Articles
+  Description: Articles on homepage
+{% endcomment %}
+
+<style>
+    .comichive-articles{
+    }
+</style>
+
+{% assign blogdata = blogs.news %}
+
+<section class="page-width">
+  <h2>{{ section.settings.articles_title }}</h2>
+
+  <div class="comichive-articles">
+    {% if blogdata.articles.size > 0 %}
+      {% for article in blogdata.articles limit: 3 %}
+        <span>{{ article.published_at | date: '%d %b %Y' }}</span>
+        <img
+          src="{{ article.image | image_url: width: 1000 }}"
+          alt="{{ article.title }}"
+          width="500"
+          height="500"
+          loading="lazy"
+        >
+        <h3>{{ article.title }}</h3>
+        <a href="{{ article.url }}">Read more</a>
+      {% endfor %}
+    {% else %}
+      <p>No articles found.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "ComicHive Articles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "articles_title",
+      "label": "Articles Title",
+      "default": "Read our articles"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ComicHive Articles"
+    }
+  ]
+}
+{% endschema %}
