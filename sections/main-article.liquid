@@ -1,22 +1,37 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
+<style>
+  .article-template p{
+    color: #000;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .article-template img{
+    max-height: 500px;
+    min-width: 100vw !important;
+    object-fit: cover !important;
+  }
+
+</style>
+
 <article class="article-template">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
-        <div class="page-width page-width--narrow">
+        <div class="">
           {% render block %}
         </div>
       {%- when 'featured_image' -%}
         {%- if article.image -%}
           <div
-            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} !mt-[80px] !max-w-none"
             {{ block.shopify_attributes }}
           >
             <div
-              class="article-template__hero-{{ block.settings.image_height }} media"
+              class="article-template__hero-500 media"
               {% if block.settings.image_height == 'adapt' and article.image %}
-                style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
+                style="padding-bottom: 500px;"
               {% endif %}
             >
               <img
@@ -43,7 +58,7 @@
 
       {%- when 'title' -%}
         <header
-          class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
           {{ block.shopify_attributes }}
         >
           <h1
@@ -65,12 +80,13 @@
 
       {%- when 'content' -%}
         <div
-          class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="article-template__content page-width rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {{ block.shopify_attributes }}
         >
           {{ article.content }}
         </div>
 
+      {% comment %}
       {%- when 'share' -%}
         <div
           class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -79,6 +95,7 @@
           {% assign share_url = request.origin | append: article.url %}
           {% render 'share-button', block: block, share_link: share_url %}
         </div>
+        {% endcomment %}
     {%- endcase -%}
   {%- endfor -%}
 
