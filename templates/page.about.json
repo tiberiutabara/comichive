@@ -27,10 +27,21 @@
         "section_secondarybt_text": "",
         "section_secondarybt_url": ""
       }
+    },
+    "comichive_newsletter_DEUwmg": {
+      "type": "comichive-newsletter",
+      "settings": {
+        "news_title": "Join newsletter",
+        "news_description": "<p>Stay connected with us and get the inside scoop on new comic releases, exclusive discounts, special events, and much more. By joining our newsletter, you’ll be the first to know about everything happening in the world of comics. We’ll deliver updates directly to your inbox, ensuring you’re always in the loop. Sign up today and make sure you're never left behind on the latest comics, deals, and offers we have in store!</p>",
+        "news_image": "shopify://shop_images/mailbox.png",
+        "news_primarybt_text": "Join newsletter",
+        "news_primarybt_url": "https://www.google.com"
+      }
     }
   },
   "order": [
     "comichive_hero_R4wkaM",
-    "comichive_textsection_yYHQNK"
+    "comichive_textsection_yYHQNK",
+    "comichive_newsletter_DEUwmg"
   ]
 }
