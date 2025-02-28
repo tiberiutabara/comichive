@@ -98,12 +98,19 @@
         "news_primarybt_text": "Join newsletter",
         "news_primarybt_url": "https://www.google.com"
       }
+    },
+    "comichive_articles_RUrxFT": {
+      "type": "comichive-articles",
+      "settings": {
+        "articles_title": "Read our articles"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "comichive_textsection_NfGRjW",
-    "comichive_newsletter_gxpP4A"
+    "comichive_newsletter_gxpP4A",
+    "comichive_articles_RUrxFT"
   ]
 }
