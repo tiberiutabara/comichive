@@ -15,6 +15,14 @@
         "hero_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
       }
     },
+    "comichive_about_title_48mh7K": {
+      "type": "comichive-about-title",
+      "settings": {
+        "first_header": "Dive into the Ultimate Comic Experience",
+        "second_header": "Where Every Page Sparks Imagination and Adventure",
+        "first_subheader": "Discover a Universe of Heroes, Villains, and Unforgettable Stories, All in One Place – Because Comics Are More Than Just Books Explore the Legends, Dive Into New Worlds, and Celebrate the Art of Storytelling"
+      }
+    },
     "comichive_textsection_yYHQNK": {
       "type": "comichive-textsection",
       "settings": {
@@ -28,6 +36,13 @@
         "section_secondarybt_url": ""
       }
     },
+    "comichive_about_text_xeGNp9": {
+      "type": "comichive-about-text",
+      "settings": {
+        "about_header": "A Universe of Comics at Your Fingertips",
+        "about_text": "<p>From classic superhero sagas to indie gems and the latest manga releases, Comic Hive brings you a vast selection of stories to explore. We partner with top publishers and independent creators to ensure you have access to rare editions, limited prints, and the hottest new issues. Our easy-to-navigate online store makes it effortless to find your next favorite read or complete your collection. </p><p>At Comic Hive, we are committed to delivering an expansive and diverse range of comics to suit every kind of reader. Whether you’re a fan of mainstream superheroes like Spider-Man, Batman, or the X-Men, or prefer deep-cut indie graphic novels, we ensure that our inventory is always up to date with fresh and exciting selections. Beyond just offering comics, we provide in-depth reviews, reading guides, and exclusive content that help you navigate through the vast world of comic book storytelling. </p><p>Our dedicated team of comic book enthusiasts is constantly on the lookout for the next big thing in the industry, ensuring that you get early access to pre-orders, limited-edition variants, and signed collectibles. We take pride in sourcing hard-to-find issues and providing a seamless shopping experience, whether you’re after a nostalgic classic or the latest crossover event. Comic Hive is your one-stop destination for all things comics, making it easier than ever to dive into new adventures and rediscover old favorites.</p>"
+      }
+    },
     "comichive_newsletter_DEUwmg": {
       "type": "comichive-newsletter",
       "settings": {
@@ -37,11 +52,21 @@
         "news_primarybt_text": "Join newsletter",
         "news_primarybt_url": "https://www.google.com"
       }
+    },
+    "comichive_about_text_diBPqh": {
+      "type": "comichive-about-text",
+      "settings": {
+        "about_header": "More Than a Store – A Community of Fans",
+        "about_text": "<p>Comic Hive isn’t just about buying comics; it’s about being part of a thriving fandom. We host virtual events, share expert recommendations, and keep you updated with industry news. Whether you’re here for exclusive collectibles, signed editions, or just to chat with fellow enthusiasts, we’re dedicated to making your experience unforgettable. Join us and be part of the hive! </p><p>We strive to build an inclusive and welcoming space where comic lovers from all walks of life can connect and celebrate their passion. Our forums and social media channels are buzzing with discussions, fan theories, and debates on everything from the latest Marvel and DC arcs to hidden gems in the world of indie comics. We believe that comics are a powerful storytelling medium that transcends age, culture, and background, bringing people together through a shared love for compelling narratives and stunning artwork. </p><p>At Comic Hive, we regularly host online events, live Q&A sessions with creators, and interactive fan polls, allowing our community to engage with industry professionals and fellow fans alike. Our blog features insightful articles, character deep-dives, and exclusive interviews that give you an inside look into the world of comics. Whether you’re a seasoned collector, a newcomer exploring the medium, or a passionate reader looking for recommendations, we offer a space that caters to your interests and keeps you connected to the ever-evolving world of comics. </p><p>Comic Hive is more than just a marketplace—it’s a hub for discovery, connection, and celebration. We invite you to join our growing community, explore the boundless creativity of comics, and share in the joy of storytelling. The adventure awaits!</p>"
+      }
     }
   },
   "order": [
     "comichive_hero_R4wkaM",
+    "comichive_about_title_48mh7K",
     "comichive_textsection_yYHQNK",
-    "comichive_newsletter_DEUwmg"
+    "comichive_about_text_xeGNp9",
+    "comichive_newsletter_DEUwmg",
+    "comichive_about_text_diBPqh"
   ]
 }
