@@ -1,0 +1,39 @@
+
+<div class="page-width text-center flex flex-col gap-[20px] !mt-[40px] max-lg:!mb-[100px] !pb-[20px]">
+    <div>
+        <h1>{{ section.settings.first_header }}</h1>
+        <h1>{{ section.settings.second_header }}</h1>
+    </div>
+    <h2>{{ section.settings.first_subheader }}</h2>
+</div>
+
+{% schema %}
+{
+    "name": "Comichive About Title",
+    "settings": [
+        {
+            "type": "text",
+            "id": "first_header",
+            "label": "First Header",
+            "default": "First header"
+        },
+        {
+            "type": "text",
+            "id": "second_header",
+            "label": "Second Header",
+            "default": "Second header"
+        },
+        {
+            "type": "text",
+            "id": "first_subheader",
+            "label": "First Subheader",
+            "default": "First subheader"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Comichive About Title"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+<style>
+ .comichive-about-text p{
+    margin-bottom: 20px;
+}
+</style>
+
+<div class="page-width flex flex-col gap-[40px] !pb-[100px] max-lg:!mt-[100px]">
+    <h1>{{ section.settings.about_header }}</h1>
+    <div class="max-w-[760px] text-black comichive-about-text">
+        {{ section.settings.about_text }}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Comichive About Text",
+    "settings": [
+        {
+            "type": "text",
+            "id": "about_header",
+            "label": "About Header",
+            "default": "About header"
+        },
+        {
+            "type": "richtext",
+            "id": "about_text",
+            "label": "About Text"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Comichive About Text"
+        }
+    ]
+}
+{% endschema %}
