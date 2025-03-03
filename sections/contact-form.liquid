@@ -14,14 +14,14 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient my-[40px]">
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h1 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} !mb-[-10px]">
         {{ section.settings.heading }}
-      </h2>
+      </h1>
     {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+      <h1 class="visually-hidden !m-0">{{ 'templates.contact.form.title' | t }}</h1>
     {%- endif -%}
     {%- liquid
       assign contact_form_class = 'isolate'
@@ -31,16 +31,16 @@
     -%}
     {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
       {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+        <h1 class="form-status form-status-list form__message !m-0" tabindex="-1" autofocus>
           {{- 'icon-success.svg' | inline_asset_content -}}
           {{ 'templates.contact.form.post_success' | t }}
-        </h2>
+        </h1>
       {%- elsif form.errors -%}
         <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+          <h1 class="form-status caption-large text-body !m-0" role="alert" tabindex="-1" autofocus>
             {{- 'icon-error.svg' | inline_asset_content -}}
             {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
+          </h1>
         </div>
         <ul class="form-status-list caption-large" role="list">
           <li>
@@ -51,6 +51,17 @@
           </li>
         </ul>
       {%- endif -%}
+
+      {% comment %}
+       START: Custom field comichive
+      {% endcomment %}
+
+      <p class="text-black !my-[30px]">{{ section.settings.comichive_form_description }}</p>
+
+      {% comment %}
+       END: Custom field comichive
+      {% endcomment %}
+
       <div class="contact__fields">
         <div class="field">
           <input
@@ -126,10 +137,19 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
-      <div class="contact__button">
+      <div class="contact__button !mt-0">
+        {% comment %}
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
         </button>
+        {% endcomment %}
+
+        {% render 'comichive-button', 
+          text: 'Send contact form',
+          link: '#',
+          type: 'primary',
+          background: 'light'
+       %}
       </div>
     {%- endform -%}
   </div>
@@ -149,6 +169,11 @@
       "id": "heading",
       "default": "t:sections.contact-form.settings.title.default",
       "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "comichive_form_description",
+      "label": "Comichive form description"
     },
     {
       "type": "select",

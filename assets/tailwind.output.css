@@ -6,10 +6,12 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-200: oklch(0.885 0.062 18.334);
     --color-teal-400: oklch(0.777 0.152 181.912);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --font-weight-normal: 400;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -211,11 +213,20 @@
       max-width: 96rem;
     }
   }
+  .\!m-0 {
+    margin: calc(var(--spacing) * 0) !important;
+  }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
   }
   .mx-auto {
     margin-inline: auto;
+  }
+  .\!my-\[20px\] {
+    margin-block: 20px !important;
+  }
+  .\!my-\[30px\] {
+    margin-block: 30px !important;
   }
   .\!my-\[40px\] {
     margin-block: 40px !important;
@@ -225,6 +236,15 @@
   }
   .my-\[20px\] {
     margin-block: 20px;
+  }
+  .my-\[40px\] {
+    margin-block: 40px;
+  }
+  .my-\[100px\] {
+    margin-block: 100px;
+  }
+  .\!mt-0 {
+    margin-top: calc(var(--spacing) * 0) !important;
   }
   .\!mt-\[20px\] {
     margin-top: 20px !important;
@@ -238,6 +258,12 @@
   .\!mt-\[80px\] {
     margin-top: 80px !important;
   }
+  .mt-0 {
+    margin-top: calc(var(--spacing) * 0);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
   .mt-\[20px\] {
     margin-top: 20px;
   }
@@ -246,6 +272,18 @@
   }
   .\!mb-0 {
     margin-bottom: calc(var(--spacing) * 0) !important;
+  }
+  .\!mb-\[-10px\] {
+    margin-bottom: -10px !important;
+  }
+  .\!mb-\[-14px\] {
+    margin-bottom: -14px !important;
+  }
+  .\!mb-\[-20px\] {
+    margin-bottom: -20px !important;
+  }
+  .\!mb-\[0px\] {
+    margin-bottom: 0px !important;
   }
   .\!mb-\[10px\] {
     margin-bottom: 10px !important;
@@ -276,6 +314,9 @@
   }
   .mb-\[10px\] {
     margin-bottom: 10px;
+  }
+  .mb-\[20px\] {
+    margin-bottom: 20px;
   }
   .mb-\[40px\] {
     margin-bottom: 40px;
@@ -414,6 +455,12 @@
     --tw-translate-y: calc(var(--spacing) * -0.5);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .rotate-0 {
+    rotate: 0deg;
+  }
+  .rotate-180 {
+    rotate: 180deg;
+  }
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
@@ -453,6 +500,9 @@
   .gap-7 {
     gap: calc(var(--spacing) * 7);
   }
+  .gap-\[10px\] {
+    gap: 10px;
+  }
   .gap-\[20px\] {
     gap: 20px;
   }
@@ -478,6 +528,13 @@
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
   }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-\[\#252827\]\/20 {
+    border-color: color-mix(in oklab, #252827 20%, transparent);
+  }
   .border-t-\[\#FFFFFF\]\/40 {
     border-top-color: color-mix(in oklab, #FFFFFF 40%, transparent);
   }
@@ -490,6 +547,9 @@
   .bg-black {
     background-color: var(--color-black);
   }
+  .bg-red-200 {
+    background-color: var(--color-red-200);
+  }
   .\!bg-\[radial-gradient\(circle\,rgba\(0\,0\,0\,0\.4\)_0\%\,rgba\(0\,0\,0\,0\.9\)_100\%\)\] {
     background-image: radial-gradient(circle,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.9) 100%) !important;
   }
@@ -499,8 +559,29 @@
   .object-cover {
     object-fit: cover;
   }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-\[10px\] {
+    padding-inline: 10px;
+  }
+  .px-\[14px\] {
+    padding-inline: 14px;
+  }
   .px-\[15px\] {
     padding-inline: 15px;
+  }
+  .px-\[20px\] {
+    padding-inline: 20px;
+  }
+  .px-\[25px\] {
+    padding-inline: 25px;
+  }
+  .px-\[30px\] {
+    padding-inline: 30px;
   }
   .px-\[40px\] {
     padding-inline: 40px;
@@ -514,14 +595,26 @@
   .py-\[5px\] {
     padding-block: 5px;
   }
+  .py-\[10px\] {
+    padding-block: 10px;
+  }
+  .py-\[15px\] {
+    padding-block: 15px;
+  }
   .py-\[20px\] {
     padding-block: 20px;
+  }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
   }
   .pt-\[20px\] {
     padding-top: 20px;
   }
   .pr-\[20px\] {
     padding-right: 20px;
+  }
+  .\!pb-0 {
+    padding-bottom: calc(var(--spacing) * 0) !important;
   }
   .\!pb-\[0px\] {
     padding-bottom: 0px !important;
@@ -541,6 +634,9 @@
   .\!pb-\[100px\] {
     padding-bottom: 100px !important;
   }
+  .pb-4 {
+    padding-bottom: calc(var(--spacing) * 4);
+  }
   .pb-\[40px\] {
     padding-bottom: 40px;
   }
@@ -549,6 +645,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-left {
+    text-align: left;
   }
   .text-right {
     text-align: right;
@@ -559,6 +658,10 @@
   .text-\[14px\] {
     font-size: 14px;
   }
+  .\!font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal) !important;
+  }
   .\!text-white {
     color: var(--color-white) !important;
   }
@@ -567,6 +670,9 @@
   }
   .text-\[\#FC582D\] {
     color: #FC582D;
+  }
+  .text-\[px\] {
+    color: px;
   }
   .text-black {
     color: var(--color-black);
@@ -728,6 +834,11 @@
       max-width: 400px;
     }
   }
+  .max-lg\:max-w-full {
+    @media (width < 64rem) {
+      max-width: 100%;
+    }
+  }
   .max-lg\:flex-col {
     @media (width < 64rem) {
       flex-direction: column;
@@ -763,6 +874,11 @@
       padding-inline: 10px;
     }
   }
+  .max-lg\:px-\[30px\] {
+    @media (width < 64rem) {
+      padding-inline: 30px;
+    }
+  }
   .max-lg\:pt-\[120px\] {
     @media (width < 64rem) {
       padding-top: 120px;
@@ -781,6 +897,11 @@
   .max-lg\:pl-4 {
     @media (width < 64rem) {
       padding-left: calc(var(--spacing) * 4);
+    }
+  }
+  .max-lg\:\!text-\[15px\] {
+    @media (width < 64rem) {
+      font-size: 15px !important;
     }
   }
   .max-sm\:max-h-\[280px\] {
@@ -806,6 +927,11 @@
   .lg\:h-\[330px\] {
     @media (width >= 64rem) {
       height: 330px;
+    }
+  }
+  .lg\:max-w-\[760px\] {
+    @media (width >= 64rem) {
+      max-width: 760px;
     }
   }
   .lg\:flex-row {
@@ -873,6 +999,10 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-shadow {
   syntax: "*";
