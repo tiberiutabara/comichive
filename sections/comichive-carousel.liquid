@@ -1,0 +1,63 @@
+{% comment %}
+    Title: ComicHive Carousel 
+    Description: Carousel on homepage, homepage hero
+{% endcomment %}
+
+{% for block in section.blocks %}
+    <div class="h-[500px] bg-slate-800 flex flex-col gap-[40px] justify-center items-center">
+        <h2>{{ block.settings.slide_title }}</h2>
+
+        <h1>{{ block.settings.slide_header }}</h1>
+
+        {% render 'comichive-button', 
+            text: block.settings.slide_button_text,
+            link: block.settings.slide_button_link,
+            type: 'primary',
+            background: 'light'
+         %}
+    </div>
+{% endfor %}
+
+<script>
+
+</script>
+
+{% schema %}
+{
+    "name": "ComicHive Carousel",
+    "blocks": [
+        {
+            "type": "carousel_slides",
+            "name": "Carousel Slide",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Title",
+                    "id": "slide_title"
+                },
+                {
+                    "type": "text",
+                    "label": "Header",
+                    "id": "slide_header"
+                },
+                {
+                    "type": "text",
+                    "label": "Button text",
+                    "id": "slide_button_text",
+                    "default": "Read more details"
+                },
+                {
+                    "type": "url",
+                    "label": "Button link",
+                    "id": "slide_button_link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "ComicHive Carousel"
+        }
+    ]
+}
+{% endschema %}

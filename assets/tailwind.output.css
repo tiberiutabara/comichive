@@ -8,6 +8,7 @@
       "Courier New", monospace;
     --color-red-200: oklch(0.885 0.062 18.334);
     --color-teal-400: oklch(0.777 0.152 181.912);
+    --color-slate-800: oklch(0.279 0.041 260.031);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -381,6 +382,9 @@
   .h-\[280px\] {
     height: 280px;
   }
+  .h-\[500px\] {
+    height: 500px;
+  }
   .h-auto {
     height: auto;
   }
@@ -549,6 +553,9 @@
   }
   .bg-red-200 {
     background-color: var(--color-red-200);
+  }
+  .bg-slate-800 {
+    background-color: var(--color-slate-800);
   }
   .\!bg-\[radial-gradient\(circle\,rgba\(0\,0\,0\,0\.4\)_0\%\,rgba\(0\,0\,0\,0\.9\)_100\%\)\] {
     background-image: radial-gradient(circle,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.9) 100%) !important;
