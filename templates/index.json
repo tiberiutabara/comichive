@@ -9,6 +9,58 @@
  */
 {
   "sections": {
+    "comichive_carousel_6zNfn4": {
+      "type": "comichive-carousel",
+      "blocks": {
+        "carousel_slides_m7rJYz": {
+          "type": "carousel_slides",
+          "settings": {
+            "slide_title": "Together with the release of this new comic book",
+            "slide_header": "Comicon event - official date announced",
+            "slide_button_text": "Read more details",
+            "slide_button_link": "",
+            "slide_image": "shopify://shop_images/pexels-rafael-titoneli-1467386-3221533.jpg"
+          }
+        },
+        "carousel_slides_6Xikqp": {
+          "type": "carousel_slides",
+          "settings": {
+            "slide_title": "Get ready for an exclusive collector’s edition",
+            "slide_header": "Limited Variant Covers – Now Available",
+            "slide_button_text": "Read more details",
+            "slide_button_link": "",
+            "slide_image": "shopify://shop_images/pexels-niezam-16516.jpg"
+          }
+        },
+        "carousel_slides_GmGjHt": {
+          "type": "carousel_slides",
+          "settings": {
+            "slide_title": "A hero’s journey starts here",
+            "slide_header": "New Graphic Novels Just Dropped",
+            "slide_button_text": "Read more details",
+            "slide_button_link": "",
+            "slide_image": "shopify://shop_images/pexels-introspectivedsgn-7809123.jpg"
+          }
+        },
+        "carousel_slides_9RA6RA": {
+          "type": "carousel_slides",
+          "settings": {
+            "slide_title": "Your favorite stories, now at a discount",
+            "slide_header": "Mega Comic Sale – Up to 50% Off",
+            "slide_button_text": "Read more details",
+            "slide_button_link": "",
+            "slide_image": "shopify://shop_images/pexels-introspectivedsgn-7524992.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_slides_m7rJYz",
+        "carousel_slides_6Xikqp",
+        "carousel_slides_GmGjHt",
+        "carousel_slides_9RA6RA"
+      ],
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -68,6 +120,7 @@
     }
   },
   "order": [
+    "comichive_carousel_6zNfn4",
     "featured_collection",
     "comichive_textsection_NfGRjW",
     "comichive_newsletter_gxpP4A",
