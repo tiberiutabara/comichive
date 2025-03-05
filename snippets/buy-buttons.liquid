@@ -10,7 +10,61 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
-<div {{ block.shopify_attributes }}>
+
+
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+button.comichive-product-button{
+
+    /* Custom product options for button */
+    min-height: 0;
+
+    /* Font options */
+    font-family: "Roboto Condensed", serif;
+    font-weight: 1000;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    
+    /* Sizes styles */
+    border: 1px solid;
+    padding: 6px 24px;
+
+    /* Colors */
+    color: #000000;
+    background: #EDC032;
+
+    /* Box shadow */
+    box-shadow: var(--x-offset) var(--y-offset) var(--blur-radius) var(--spread-radius) var(--shadow-color);
+    --x-offset: 2px;
+    --y-offset: 4px;
+    --blur-radius: 0px;
+    --spread-radius: 0px;
+    --shadow-color: #000000;
+
+    /* Transition */
+    transition: all 0.1s ease-in;
+
+}
+
+button.comichive-product-button:hover{
+
+    cursor: pointer;
+
+    /* Colors */
+    background: #FFFFFF;
+
+    /* Box shadow */
+    --x-offset: 4px;
+    --y-offset: 5px;
+
+}
+</style>
+
+
+<div {{ block.shopify_attributes }} class="w-fit h-fit" >
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
@@ -25,7 +79,7 @@
     -%}
 
     <product-form
-      class="product-form"
+      class="product-form !m-0 !ml-[20px]"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
@@ -74,7 +128,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %} comichive-product-button"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -94,7 +148,7 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            <div class="hidden">{{ form | payment_button }}</div>
           {%- endif -%}
         </div>
       {%- endform -%}
