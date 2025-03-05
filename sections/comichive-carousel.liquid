@@ -23,9 +23,9 @@
             </div>
         {% endfor %}
     </div>
-    <div class="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex space-x-[20px]">
+    <div class="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex">
         {% for block in section.blocks %}
-            <button class="w-[100px] h-[5px] max-lg:w-[50px] max-lg:h-[4px] cursor-pointer bg-white opacity-50 hover:opacity-100 transition-opacity duration-300 {% if forloop.first %}opacity-100{% endif %}" data-index="{{ forloop.index0 }}"></button>
+            <button class="w-[100px] h-[5px] max-lg:w-[50px] max-lg:h-[4px] mx-3 lg:mx-5 cursor-pointer bg-white opacity-50 hover:opacity-100 transition-opacity duration-300 {% if forloop.first %}opacity-100{% endif %}" data-index="{{ forloop.index0 }}"></button>
         {% endfor %}
     </div>
 </div>
