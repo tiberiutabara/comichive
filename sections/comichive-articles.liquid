@@ -26,7 +26,7 @@
 {% assign blogdata = blogs.news %}
 
 <section class="page-width !my-[40px]">
-  <h1 class="mb-[10px]">{{ section.settings.articles_title }}</h1>
+  <h1 id="articles-title" class="mb-[10px]">{{ section.settings.articles_title }}</h1>
 
   <div class="comichive-articles flex max-lg:flex-wrap gap-[20px]">
     {% if blogdata.articles.size > 0 %}
@@ -50,6 +50,44 @@
     {% endif %}
   </div>
 </section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // Animate the section title from left to right
+    gsap.from("#articles-title", {
+      scrollTrigger: {
+        trigger: "#articles-title",
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none none"
+      },
+      x: -100,  // Moves the title from left
+      opacity: 0,
+      duration: 0.5  // Set the duration for the title animation
+    });
+  
+    // Animate the article cards (each div in the loop)
+    gsap.utils.toArray(".comichive-articles > div").forEach((article, index) => {
+      gsap.from(article, {
+        scrollTrigger: {
+          trigger: article,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none"
+        },
+        y: 50, // Moves the articles from below
+        opacity: 0,
+        duration: 0.5, // Faster animation for the article cards
+        delay: index * 0.2 // Delays each card animation slightly
+      });
+    });
+  });
+  
+</script>
 
 {% schema %}
 {

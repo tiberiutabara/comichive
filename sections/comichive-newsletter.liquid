@@ -4,17 +4,17 @@
 {% endcomment %}
 
 <div class="w-full bg-[#FC582D] mb-[60px]">
-  <section class="page-width flex justify-between items-center max-lg:flex-col max-lg:gap-[40px] max-lg:!pb-[60px]">
+  <section class="page-width flex justify-between items-center max-lg:flex-col max-lg:gap-[40px] max-lg:!pb-[60px]" id="newsletter-section">
     <img
       src="{{ section.settings.news_image | image_url: width: 1000 }}"
       alt="{{ section.settings.news_title }}"
       width="1000"
       height="1000"
       loading="lazy"
-      class="h-[100vh] max-h-[380px] max-sm:max-h-[280px] w-auto pt-[20px] max-lg:mt-[40px]"
+      class="h-[100vh] max-h-[380px] max-sm:max-h-[280px] w-auto pt-[20px] max-lg:mt-[40px]" id="newsletter-image"
     >
 
-    <div class="flex flex-col items-end gap-[30px] lg:gap-[40px] max-w-[450px] text-white">
+    <div class="flex flex-col items-end gap-[30px] lg:gap-[40px] max-w-[450px] text-white" id="newsletter-text">
       <h1 class="!text-white text-right">{{ section.settings.news_title }}</h1>
 
       <div class="text-right"> 
@@ -30,6 +30,44 @@
     </div>
   </section>
 </div>
+
+<script>
+  // Wait for the page to load before applying animations
+  document.addEventListener("DOMContentLoaded", function() {
+    // GSAP ScrollTrigger Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the text and buttons coming from the right once section is revealed
+    gsap.from("#newsletter-text", {
+      x: 200, // Start from the right (changed to 200 for opposite direction)
+      opacity: 0, // Fade in
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#newsletter-text", // Element that triggers the animation
+        once: true, // Trigger animation only once when revealed
+        start: "top 80%", // When the top of the element hits 80% of the viewport height
+        end: "bottom top", // End when the bottom of the element reaches the top of the viewport
+        markers: false // Set to true for debugging scroll trigger
+      }
+    });
+
+    // Animate the image coming from the left once section is revealed
+    gsap.from("#newsletter-image", {
+      x: -200, // Start from the left (changed to -200 for opposite direction)
+      opacity: 0, // Fade in
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#newsletter-image", // Element that triggers the animation
+        once: true, // Trigger animation only once when revealed
+        start: "top 80%", // When the top of the element hits 80% of the viewport height
+        end: "bottom top", // End when the bottom of the element reaches the top of the viewport
+        markers: false // Set to true for debugging scroll trigger
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

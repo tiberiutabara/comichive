@@ -3,28 +3,17 @@
  Description: A section used on various pages: title, description, image, up to 2 buttons
 {% endcomment %}
 
-{% style %}
-
-{% endstyle %}
-
 <section class="page-width flex justify-between items-center !my-[80px] max-lg:flex-col-reverse max-lg:gap-[30px] max-lg:!my-[40px]">
-
-    <div class="lg:mr-[40px] flex flex-col gap-[30px] lg:gap-[40px]">
-
+    <div class="lg:mr-[40px] flex flex-col gap-[30px] lg:gap-[40px]" id="text-container">
         <h1>{{ section.settings.section_title }}</h1>
-
-        <div>
-            {{ section.settings.section_description }}
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10 ">
+        <div>{{ section.settings.section_description }}</div>
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10">
             {% render 'comichive-button', 
                 text: section.settings.section_primarybt_text,
                 link: section.settings.section_primarybt_url,
                 type: 'primary',
                 background: 'light'
             %}
-
             {% if section.settings.section_secondarybt_toggle == true %}
                 {% render 'comichive-button', 
                     text: section.settings.section_secondarybt_text,
@@ -34,12 +23,49 @@
                 %}
             {% endif %}
         </div>
-        
     </div>
 
-        <img src="{{ section.settings.section_image | image_url: width: 1000 }}" alt="{{ section.settings.section_title }}" width="1000" height="1000" loading="lazy" class="max-h-[350px] h-auto w-auto">
-
+    <img src="{{ section.settings.section_image | image_url: width: 1000 }}" alt="{{ section.settings.section_title }}" width="1000" height="1000" loading="lazy" class="max-h-[350px] h-auto w-auto" id="image-container">
 </section>
+
+<script>
+    // Wait for the page to load before applying animations
+    document.addEventListener("DOMContentLoaded", function() {
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate the text and buttons coming from the left once section is revealed
+        gsap.from("#text-container", {
+            x: -200, // Start from the left
+            opacity: 0, // Fade in
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#text-container", // Element that triggers the animation
+                once: true, // Trigger animation only once when revealed
+                start: "top 80%", // When the top of the element hits 80% of the viewport height
+                end: "bottom top", // End when the bottom of the element reaches the top of the viewport
+                markers: false // Set to true for debugging scroll trigger
+            }
+        });
+
+        // Animate the image coming from the right once section is revealed
+        gsap.from("#image-container", {
+            x: 200, // Start from the right
+            opacity: 0, // Fade in
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#image-container", // Element that triggers the animation
+                once: true, // Trigger animation only once when revealed
+                start: "top 80%", // When the top of the element hits 80% of the viewport height
+                end: "bottom top", // End when the bottom of the element reaches the top of the viewport
+                markers: false // Set to true for debugging scroll trigger
+            }
+        });
+    });
+</script>
+
 
 {% schema %}
 {

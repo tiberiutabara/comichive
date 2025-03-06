@@ -70,7 +70,7 @@
        !mb-0
       ">
       {%- if section.settings.title != blank -%}
-        <h1 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}  !mb-[20px] max-lg:!mb-[10px]">
+        <h1 id="animate-title" class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}  !mb-[20px] max-lg:!mb-[10px]">
           {{ section.settings.title }}
         </h1>
       {%- endif -%}
@@ -100,7 +100,7 @@
         {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} animate-card"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
@@ -122,7 +122,7 @@
         {%- else -%}
           {%- for i in (1..section.settings.columns_desktop) -%}
             <li
-              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} animate-card"
               {% if settings.animations_reveal_on_scroll %}
                 data-cascade
                 style="--animation-order: {{ forloop.index }};"
@@ -181,7 +181,7 @@
         </div>
       {%- endif -%}
     </slider-component>
-
+    
     {%- if section.settings.show_view_all and more_in_collection -%}
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
@@ -198,6 +198,42 @@
     {%- endif -%}
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the title from left to right
+    gsap.from("#animate-title", {
+      scrollTrigger: {
+        trigger: "#animate-title",
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none none"
+      },
+      x: -100,  // Moves the title from 100px left
+      opacity: 0,
+      duration: 0.5
+    });    
+
+    // Animate the cards from top to bottom with a delay
+    gsap.utils.toArray(".animate-card").forEach((card, index) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+        delay: index * 0.1
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
