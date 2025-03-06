@@ -229,6 +229,35 @@
                     <h2 class="mb-[20px] max-md:mb-[10px]">Description</h2>
                     {{ product.description }}
                   </div>
+
+                  {% comment %}
+                   Begin Metafields
+                  {% endcomment %}
+
+                  <div class="w-full my-[10px]">
+
+                      <div class="border-b border-[#252827]/20 mb-[20px]">
+                          <button class="accordion-toggle w-full flex justify-between items-center text-left cursor-pointer">
+                              <h2>Release notes</h2>
+                              <span class="transition-transform transform rotate-0 text-[#EDC032] text-[14px]">▼</span>
+                          </button>
+                          <p class="accordion-content hidden py-[20px]">{{ product.metafields.custom.release_notes }}</p>
+                      </div>
+
+                      <div class="border-b border-[#252827]/20 mb-[20px]">
+                          <button class="accordion-toggle w-full flex justify-between items-center text-left cursor-pointer">
+                              <h2>Featured heros</h2>
+                              <span class="transition-transform transform rotate-0 text-[#EDC032] text-[14px]">▼</span>
+                          </button>
+                          <p class="accordion-content hidden py-[20px]">{{ product.metafields.custom.featured_heros }}</p>
+                      </div>
+
+                  </div>
+
+                  {% comment %}
+                   End Metafields
+                  {% endcomment %}
+                  
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
@@ -765,6 +794,21 @@
     </script>
   </div>
 </product-info>
+
+<script> 
+  // SCRIPTS FOR ACCORDION
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".accordion-toggle").forEach(button => {
+        button.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const chevron = this.querySelector("span");
+
+            content.classList.toggle("hidden");
+            chevron.classList.toggle("rotate-180");
+        });
+    });
+  });
+</script>
 
 {% schema %}
 {

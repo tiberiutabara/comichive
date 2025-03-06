@@ -273,6 +273,9 @@
   .\!my-\[80px\] {
     margin-block: 80px !important;
   }
+  .my-\[10px\] {
+    margin-block: 10px;
+  }
   .my-\[20px\] {
     margin-block: 20px;
   }
@@ -326,6 +329,9 @@
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-\[2px\] {
+    margin-bottom: 2px;
   }
   .mb-\[5px\] {
     margin-bottom: 5px;
@@ -482,6 +488,9 @@
   }
   .w-\[40vw\] {
     width: 40vw;
+  }
+  .w-\[100\%\] {
+    width: 100%;
   }
   .w-\[100px\] {
     width: 100px;
