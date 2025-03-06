@@ -49,10 +49,10 @@
     }
 
     .product__info-container .comichive-product-price span.price-item {
-    font-weight: bold;
-    font-family: "Bebas Neue", serif;
-    font-size: 18px;
-    width: 30vw;
+      font-weight: bold;
+      font-family: "Bebas Neue", serif;
+      font-size: 18px;
+      width: 45vw;
     }
 
     .comichive-quantity-selector{
@@ -65,6 +65,13 @@
     }
 
     .comichive-quantity-selector input{
+      font-size: 14px;
+    }
+
+    .product__description ul{
+      list-style-type: disc;
+      margin-top: 5px;
+      line-height: 20px;
       font-size: 14px;
     }
   {%- endstyle -%}
@@ -104,6 +111,19 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width !max-w-[825px] !mb-[80px] !overflow-hidden">
+
+    {% comment %}
+      Breadcrumbs
+    {% endcomment %}
+
+      <div class="my-[20px] text-[14px] !text-black lg:!ml-[36px]">
+        {% render 'breadcrumbs' %}
+      </div>
+
+    {% comment %}
+      End Breadcrumbs
+    {% endcomment %}
+
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper !max-w-[460px]">
         {% render 'product-media-gallery', variant_images: variant_images %}
@@ -130,7 +150,7 @@
                 </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1 class="!text-[48px] !leading-[58px]">{{ product.title | escape }}</h1>
+                  <h1 class="!text-[48px] !leading-[58px] max-sm:!text-[32px] max-sm:!leading-[38px]">{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
                       {{ product.title | escape }}

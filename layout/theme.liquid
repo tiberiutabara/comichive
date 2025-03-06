@@ -300,6 +300,8 @@
     {{ 'custom-base-overrides.css' | asset_url | stylesheet_tag }}
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
     {{ 'tailwind.output.css' | asset_url | stylesheet_tag }}
+
+    <script src="{{ "breadcrumbs.js" | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
