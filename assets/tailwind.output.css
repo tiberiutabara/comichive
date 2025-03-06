@@ -1202,6 +1202,31 @@
       margin-inline: 16px;
     }
   }
+  .max-sm\:ml-\[-3px\] {
+    @media (width < 40rem) {
+      margin-left: -3px;
+    }
+  }
+  .max-sm\:ml-\[-4px\] {
+    @media (width < 40rem) {
+      margin-left: -4px;
+    }
+  }
+  .max-sm\:ml-\[-5px\] {
+    @media (width < 40rem) {
+      margin-left: -5px;
+    }
+  }
+  .max-sm\:ml-\[-7px\] {
+    @media (width < 40rem) {
+      margin-left: -7px;
+    }
+  }
+  .max-sm\:ml-\[-10px\] {
+    @media (width < 40rem) {
+      margin-left: -10px;
+    }
+  }
   .max-sm\:max-h-\[280px\] {
     @media (width < 40rem) {
       max-height: 280px;
