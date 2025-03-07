@@ -14,7 +14,7 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient my-[40px]">
+<div id="comichive-contact" class="color-{{ section.settings.color_scheme }} gradient my-[40px]">
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
       <h1 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} !mb-[-10px]">
@@ -154,6 +154,24 @@
     {%- endform -%}
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    gsap.from("#comichive-contact", {
+      opacity: 0,
+      y: 50, // Moves slightly up (reversed effect)
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#comichive-contact",
+        start: "top 100%", // Trigger when the top of the element is near the 80% of the viewport
+        toggleActions: "play none none none"
+      }
+    });
+});
+</script>
 
 {% schema %}
 {

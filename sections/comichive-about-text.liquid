@@ -4,12 +4,38 @@
 }
 </style>
 
-<div class="page-width flex flex-col gap-[20px] !pb-[40px] max-lg:!mt-[60px]">
+<div class="comichive-about-text page-width flex flex-col gap-[20px] !pb-[40px] max-lg:!mt-[60px] opacity-0 transform translate-x-[-200px] transition-all duration-1000 ease-out">
     <h1>{{ section.settings.about_header }}</h1>
-    <div class="max-w-[760px] text-black comichive-about-text">
+    <div class="max-w-[760px] text-black">
         {{ section.settings.about_text }}
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll('.comichive-about-text');
+        
+        function checkScroll() {
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                const viewportHeight = window.innerHeight;
+
+                if (window.scrollY + viewportHeight > elementPosition) {
+                    // Add the animation class when the element is in the viewport
+                    element.classList.remove('opacity-0', 'translate-x-[-200px]');
+                    element.classList.add('opacity-100', 'translate-x-0');
+                }
+            });
+        }
+
+        // Listen for scroll event
+        window.addEventListener('scroll', checkScroll);
+
+        // Run checkScroll once on page load to account for initial load positioning
+        checkScroll();
+    });
+</script>
+
 
 {% schema %}
 {

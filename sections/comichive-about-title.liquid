@@ -1,11 +1,29 @@
 
-<div class="page-width text-center flex flex-col gap-[20px] !mt-[40px] !pb-[20px]">
+<div id="comichive-about-title" class="page-width text-center flex flex-col gap-[20px] !mt-[40px] !pb-[20px]">
     <div>
         <h1>{{ section.settings.first_header }}</h1>
         <h1>{{ section.settings.second_header }}</h1>
     </div>
     <h2>{{ section.settings.first_subheader }}</h2>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger);
+      
+        gsap.from("#comichive-about-title", {
+          opacity: 0,
+          y: 50, // Moves slightly up (reversed effect)
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#comichive-about-title",
+            start: "top 100%", // Trigger when the top of the element is near the 80% of the viewport
+            toggleActions: "play none none none"
+          }
+        });
+    });
+</script>
 
 {% schema %}
 {

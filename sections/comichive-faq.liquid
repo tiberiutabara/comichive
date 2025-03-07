@@ -3,7 +3,7 @@
   Description: FAQ on contact page
 {% endcomment %}
 
-<section class="max-lg:max-w-full max-w-[760px] mx-auto my-[40px] max-lg:px-[30px] px-[15px] mb-[80px]">
+<section id="comichive-faq" class="max-lg:max-w-full max-w-[760px] mx-auto my-[40px] max-lg:px-[30px] px-[15px] mb-[80px]">
     <h1>{{ section.settings.faq_title }}</h1>
     <p class="my-[20px]">{{ section.settings.faq_description }}</p>
 
@@ -34,6 +34,24 @@
             });
         });
       });
+
+      //GSAP
+
+      document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger);
+      
+        gsap.from("#comichive-faq", {
+          opacity: 0,
+          y: -50, // Moves slightly down
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#comichive-faq",
+            start: "top 130%",
+            toggleActions: "play none none none"
+          }
+        });
+    });
 </script>
 
 {% schema %}

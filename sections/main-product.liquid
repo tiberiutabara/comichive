@@ -125,10 +125,10 @@
     {% endcomment %}
 
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item product__media-wrapper !max-w-[460px]">
+      <div id="comichive-product-media" class="grid__item product__media-wrapper !max-w-[460px]">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
-      <div class="product__info-wrapper max-lg:!pl-0 !pl-[20px] grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div id="comichive-product-info" class="product__info-wrapper max-lg:!pl-0 !pl-[20px] grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
           class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %} !min-w-[342px] max-md:!min-w-full"
@@ -828,6 +828,45 @@
         });
     });
   });
+
+
+  // GSAP ANIMATIONS
+
+  // Wait for the page to load before applying animations
+  document.addEventListener("DOMContentLoaded", function() {
+    // GSAP ScrollTrigger Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the text and buttons coming from the left once section is revealed
+    gsap.from("#comichive-product-media", {
+        x: -200, // Start from the left
+        opacity: 0, // Fade in
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: "#text-container", // Element that triggers the animation
+            once: true, // Trigger animation only once when revealed
+            start: "top 100%", // When the top of the element hits 80% of the viewport height
+            end: "top 0%", // End when the bottom of the element reaches the top of the viewport
+            markers: false // Set to true for debugging scroll trigger
+        }
+    });
+
+    // Animate the image coming from the right once section is revealed
+    gsap.from("#comichive-product-info", {
+        x: 200, // Start from the right
+        opacity: 0, // Fade in
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: "#image-container", // Element that triggers the animation
+            once: true, // Trigger animation only once when revealed
+            start: "top 95%", // When the top of the element hits 80% of the viewport height
+            end: "top 0%", // End when the bottom of the element reaches the top of the viewport
+            markers: false // Set to true for debugging scroll trigger
+        }
+    });
+});
 </script>
 
 {% schema %}
