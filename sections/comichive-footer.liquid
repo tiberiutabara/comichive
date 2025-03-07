@@ -169,7 +169,10 @@
       ease: "power2.out",
       scrollTrigger: {
         trigger: "#comichive-footer",
-        start: "top 170%",
+        start: () => {
+          // Check if the screen width is less than 760px (mobile)
+          return window.innerWidth <= 760 ? "top 180%" : "top 130%";
+        },
         toggleActions: "play none none none"
       }
     });
