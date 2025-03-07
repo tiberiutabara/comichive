@@ -3,33 +3,34 @@
     Description: Carousel on homepage, homepage hero
 {% endcomment %}
 
-<div class="relative w-full overflow-hidden bg-black">
-    <div class="relative w-full h-[500px]">
-        {% for block in section.blocks %}
-            <div class="relative w-full h-full flex flex-col gap-10 justify-center items-center bg-cover bg-center bg-no-repeat transition-opacity duration-500 ease-in-out opacity-0 {% if forloop.first %}block{% else %}hidden{% endif %}" style="background-image: url('{{ block.settings.slide_image | image_url: width: 2000 }}');">
-                <!-- Overlay -->
-                <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.7)_100%)] z-0">&nbsp;</div>
-                
-                <div class="relative z-1 w-full max-w-[1000px] max-lg:px-[30px] max-lg:max-w-[760px] flex flex-col gap-[40px] max-lg:gap-[30px] max-sm:gap-[20px]">
-                    <h1 class="!text-[#EDC032] max-lg:!text-[24px] max-sm:!text-[16px]">{{ block.settings.slide_title }}</h1>
-                    <h1 class="!text-[48px] !text-white max-lg:!text-[32px] max-sm:!text-[24px]">{{ block.settings.slide_header }}</h1>
-                    {% render 'comichive-button', 
-                        text: block.settings.slide_button_text,
-                        link: block.settings.slide_button_link,
-                        type: 'primary',
-                        background: 'light'
-                     %}
+<div class="bg-black">
+    <div id="comichive-carousel" class="relative w-full overflow-hidden">
+        <div class="relative w-full h-[500px]">
+            {% for block in section.blocks %}
+                <div class="relative w-full h-full flex flex-col gap-10 justify-center items-center bg-cover bg-center bg-no-repeat transition-opacity duration-500 ease-in-out opacity-0 {% if forloop.first %}block{% else %}hidden{% endif %}" style="background-image: url('{{ block.settings.slide_image | image_url: width: 2000 }}');">
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.7)_100%)] z-0">&nbsp;</div>
+                    
+                    <div class="relative z-1 w-full max-w-[1000px] max-lg:px-[30px] max-lg:max-w-[760px] flex flex-col gap-[40px] max-lg:gap-[30px] max-sm:gap-[20px]">
+                        <h1 class="!text-[#EDC032] max-lg:!text-[24px] max-sm:!text-[16px]">{{ block.settings.slide_title }}</h1>
+                        <h1 class="!text-[48px] !text-white max-lg:!text-[32px] max-sm:!text-[24px]">{{ block.settings.slide_header }}</h1>
+                        {% render 'comichive-button', 
+                            text: block.settings.slide_button_text,
+                            link: block.settings.slide_button_link,
+                            type: 'primary',
+                            background: 'light'
+                        %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex">
-        {% for block in section.blocks %}
-            <button class="w-[100px] h-[5px] max-lg:w-[50px] max-lg:h-[4px] mx-3 lg:mx-5 cursor-pointer bg-white opacity-50 hover:opacity-100 transition-opacity duration-300 {% if forloop.first %}opacity-100{% endif %}" data-index="{{ forloop.index0 }}"></button>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex">
+            {% for block in section.blocks %}
+                <button class="w-[100px] h-[5px] max-lg:w-[50px] max-lg:h-[4px] mx-3 lg:mx-5 cursor-pointer bg-white opacity-50 hover:opacity-100 transition-opacity duration-300 {% if forloop.first %}opacity-100{% endif %}" data-index="{{ forloop.index0 }}"></button>
+            {% endfor %}
+        </div>
     </div>
 </div>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -69,6 +70,25 @@
             bar.addEventListener("click", () => showSlide(i));
         });
     });
+
+    // ANIMATIONS 
+
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger);
+      
+        gsap.from("#comichive-carousel", {
+          opacity: 0,
+          y: -50, // Moves slightly down
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#comichive-carousel",
+            start: "top 130%",
+            toggleActions: "play none none none"
+          }
+        });
+    });
+    
 </script>
 
 {% schema %}

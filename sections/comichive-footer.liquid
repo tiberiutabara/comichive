@@ -34,9 +34,9 @@
 </style>
 
 <footer class="lg:h-[330px] bg-black mt-[40px]">
-  <span class="footer-logo max-sm:ml-[-3px]">Comic hive</span>
+  <span id="animate-footer-title" class="footer-logo max-sm:ml-[-3px]">Comic hive</span>
 
-  <div class="flex items-end lg:h-[330px] max-lg:pt-[120px]">
+  <div id="comichive-footer" class="flex items-end lg:h-[330px] max-lg:pt-[120px]">
     <div class="flex flex-col w-[1000px] max-w-[1000px] mx-auto max-lg:px-[10px] max-lg:w-[320px]">
       <div class="flex justify-between items-end max-lg:flex-col-reverse max-lg:items-center">
         <span class="w-[250px] max-lg:hidden">&nbsp;</span>
@@ -156,7 +156,37 @@
   </div>
 </footer>
 
-<script></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    gsap.from("#comichive-footer", {
+      opacity: 0,
+      y: 100,
+      rotateX: 90,
+      transformOrigin: "center bottom",
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#comichive-footer",
+        start: "top 130%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    gsap.from("#animate-footer-title", {
+      scrollTrigger: {
+        trigger: "#animate-footer-title",
+        start: "top 100%",
+        toggleActions: "play none none none"
+      },
+      x: -100,  // Moves the title from 100px left
+      opacity: 0,
+      duration: 0.5
+    });    
+
+  });
+</script>
 
 {% schema %}
 {
