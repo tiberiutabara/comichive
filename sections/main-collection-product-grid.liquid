@@ -160,7 +160,7 @@
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
                 <li
-                  class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} animate-card"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"
@@ -195,6 +195,29 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the cards from top to bottom with a delay
+    gsap.utils.toArray(".animate-card").forEach((card, index) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 120%",
+          end: "top 0%",
+          toggleActions: "play none none none"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+        delay: index * 0.1
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {

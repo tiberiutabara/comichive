@@ -258,33 +258,46 @@
     
     menuOpen.classList.toggle('hidden');
     menuClose.classList.toggle('hidden');
-    dropdown.classList.toggle('hidden');
-    dropdown.classList.toggle('opacity-100');
-    dropdown.classList.toggle('opacity-0');
     cartIcon.classList.toggle('hidden');
     toggleParagraph.classList.toggle('hidden');
+
+    if (dropdown.classList.contains('hidden')) {
+      // Open the dropdown with animation
+      gsap.fromTo(dropdown, 
+        { x: '-100%', opacity: 1 }, 
+        { x: '0%', opacity: 1, duration: 0.3, ease: 'power2.out' }
+      );
+      dropdown.classList.remove('hidden');
+    } else {
+      // Close the dropdown with animation
+      gsap.to(dropdown, 
+        { x: '-100%', opacity: 1, duration: 0.3, ease: 'power2.in', onComplete: () => {
+          dropdown.classList.add('hidden');
+        }}
+      );
+    }
   });
 
- // Mobile submenu dropdown
-document.addEventListener('DOMContentLoaded', function () {
-  const toggleButtonMobile = document.getElementById('toggleDropdownMobile');
-  const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
+  // Mobile submenu dropdown
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButtonMobile = document.getElementById('toggleDropdownMobile');
+    const dropdownMenuMobile = document.getElementById('dropdownMenuMobile');
 
-  if (toggleButtonMobile && dropdownMenuMobile) {
-    toggleButtonMobile.addEventListener('click', function (event) {
-      // Toggle visibility
-      dropdownMenuMobile.classList.toggle('hidden');
+    if (toggleButtonMobile && dropdownMenuMobile) {
+      toggleButtonMobile.addEventListener('click', function (event) {
+        // Toggle visibility
+        dropdownMenuMobile.classList.toggle('hidden');
 
-      // Close if clicking outside
-      document.addEventListener('click', function closeDropdown(e) {
-        if (!toggleButtonMobile.contains(e.target) && !dropdownMenuMobile.contains(e.target)) {
-          dropdownMenuMobile.classList.add('hidden');
-          document.removeEventListener('click', closeDropdown);
-        }
+        // Close if clicking outside
+        document.addEventListener('click', function closeDropdown(e) {
+          if (!toggleButtonMobile.contains(e.target) && !dropdownMenuMobile.contains(e.target)) {
+            dropdownMenuMobile.classList.add('hidden');
+            document.removeEventListener('click', closeDropdown);
+          }
+        });
       });
-    });
-  }
-});
+    }
+  });
 </script>
 
 {% schema %}
