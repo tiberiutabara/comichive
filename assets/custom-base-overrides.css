@@ -1,5 +1,5 @@
 body{
-    overflow-x: hidden; 
+    overflow-x: hidden !important; 
     position: relative;
     width: 100%;
     padding-top: 70px;
@@ -11,6 +11,11 @@ body{
 
 .product__column-sticky{
     top: 0 !important;
+}
+
+section {
+    width: 100%;
+    max-width: 100% !important;
 }
 
 @media (max-width: 1024px) {
