@@ -28,7 +28,7 @@
     data-product-id="{{ product.id }}"
   >
     {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h1 class="related-products__heading inline-richtext {{ section.settings.heading_size }} !mb-[10px]">
+      <h1 id="animate-title" class="related-products__heading inline-richtext {{ section.settings.heading_size }} !mb-[10px]">
         {{ section.settings.heading }}
       </h1>
       <ul
@@ -37,7 +37,7 @@
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
-          <li class="grid__item">
+          <li class="grid__item animate-card">
             {% render 'card-product',
               card_product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,
@@ -45,7 +45,7 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
+              skip_styles: skip_card_product_styles,
             %}
           </li>
           {%- assign skip_card_product_styles = true -%}
@@ -57,6 +57,121 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // Wait for the recommendations to be loaded and apply animations
+    const recommendationsContainer = document.querySelector('product-recommendations');
+    const titleElement = document.querySelector("#animate-title");
+  
+    // Function to apply GSAP animation to the title
+    const animateTitle = () => {
+      gsap.from("#animate-title", {
+        scrollTrigger: {
+          trigger: "#animate-title",
+          start: "top 100%",
+          end: "top 0%",
+          toggleActions: "play none none none"
+        },
+        x: -100,  // Moves the title from 100px left
+        opacity: 0,
+        duration: 0.5
+      });
+    };
+  
+    // If title is already in DOM, animate it immediately
+    if (titleElement) {
+      animateTitle();
+    } else {
+      // Otherwise, observe when the title is added to the DOM
+      const titleObserver = new MutationObserver(function(mutationsList) {
+        mutationsList.forEach(function(mutation) {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            if (document.querySelector("#animate-title")) {
+              animateTitle();
+              titleObserver.disconnect(); // Stop observing after the title is animated
+            }
+          }
+        });
+      });
+  
+      // Observe changes in the parent element where the title should appear
+      titleObserver.observe(recommendationsContainer, { childList: true, subtree: true });
+    }
+  
+    // Wait for the recommendations to be loaded and apply card animations
+    if (recommendationsContainer) {
+      const observer = new MutationObserver(function(mutationsList, observer) {
+        mutationsList.forEach(mutation => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            // Once product items are added, apply GSAP animation to the cards
+            gsap.utils.toArray(".animate-card").forEach((card, index) => {
+              gsap.from(card, {
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 120%",
+                  end: "top 0%",
+                  toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.5,
+                delay: index * 0.1
+              });
+            });
+          }
+        });
+      });
+  
+      // Observe changes in the product-recommendations container
+      observer.observe(recommendationsContainer, { childList: true, subtree: true });
+    }
+  
+    // Hover effect for .comichive-card-hover-parent
+    const hoverEffect = () => {
+      document.querySelectorAll(".comichive-card-hover-parent").forEach((parent) => {
+        const child = parent.querySelector(".comichive-card-hover-child");
+  
+        if (child) {
+          parent.addEventListener("mouseenter", () => {
+            child.classList.add("!flex");
+            child.classList.remove("hidden");
+          });
+  
+          parent.addEventListener("mouseleave", () => {
+            child.classList.add("hidden");
+            child.classList.remove("!flex");
+          });
+        }
+      });
+    };
+  
+    // If the hover effect elements are already in the DOM, apply hover effects immediately
+    if (document.querySelector(".comichive-card-hover-parent")) {
+      hoverEffect();
+    } else {
+      // Otherwise, observe when the elements are added to the DOM and apply the hover effect
+      const hoverObserver = new MutationObserver(function(mutationsList) {
+        mutationsList.forEach(function(mutation) {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            if (document.querySelector(".comichive-card-hover-parent")) {
+              hoverEffect();
+              hoverObserver.disconnect(); // Stop observing after hover effects are applied
+            }
+          }
+        });
+      });
+  
+      // Observe the container that might contain the hover elements
+      hoverObserver.observe(recommendationsContainer, { childList: true, subtree: true });
+    }
+  });
+  
+</script>
+
 
 {% schema %}
 {
