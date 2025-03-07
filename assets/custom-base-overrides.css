@@ -5,17 +5,16 @@ body{
     padding-top: 70px;
 }
 
+.shopify-section{
+   overflow-x: hidden !important; 
+}
+
 .page-width{
     padding: 0 !important;
 }
 
 .product__column-sticky{
     top: 0 !important;
-}
-
-section {
-    width: 100%;
-    max-width: 100% !important;
 }
 
 @media (max-width: 1024px) {
