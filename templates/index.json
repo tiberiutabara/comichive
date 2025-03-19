@@ -18,7 +18,7 @@
             "slide_title": "Together with the release of this new comic book",
             "slide_header": "Comicon event - official date announced",
             "slide_button_text": "Read more details",
-            "slide_button_link": "",
+            "slide_button_link": "https://ttab.dev/",
             "slide_image": "shopify://shop_images/pexels-cottonbro-4841961.jpg"
           }
         },
@@ -28,7 +28,7 @@
             "slide_title": "Get ready for an exclusive collector’s edition",
             "slide_header": "Limited Variant Covers – Now Available",
             "slide_button_text": "Read more details",
-            "slide_button_link": "",
+            "slide_button_link": "https://ttab.dev/",
             "slide_image": "shopify://shop_images/pexels-niezam-16516.jpg"
           }
         },
@@ -38,7 +38,7 @@
             "slide_title": "A hero’s journey starts here",
             "slide_header": "New Graphic Novels Just Dropped",
             "slide_button_text": "Read more details",
-            "slide_button_link": "",
+            "slide_button_link": "https://ttab.dev/",
             "slide_image": "shopify://shop_images/pexels-introspectivedsgn-7809123.jpg"
           }
         },
@@ -48,7 +48,7 @@
             "slide_title": "Your favorite stories, now at a discount",
             "slide_header": "Mega Comic Sale – Up to 50% Off",
             "slide_button_text": "Read more details",
-            "slide_button_link": "",
+            "slide_button_link": "https://ttab.dev/",
             "slide_image": "shopify://shop_images/pexels-rafael-titoneli-1467386-3221533.jpg"
           }
         }
@@ -96,7 +96,7 @@
         "section_description": "<p>We're committed to keeping your collection up-to-date with fresh releases every two weeks. From the latest superhero sagas to gripping graphic novels and unique indie titles, we have something for every kind of reader. Our selection is constantly refreshed, ensuring you're always in the know and never miss the next big release. Visit us regularly to discover the latest comics, handpicked and delivered straight to your shelf.    </p>",
         "section_image": "shopify://shop_images/wolverine.png",
         "section_primarybt_text": "See all deals",
-        "section_primarybt_url": "shopify://collections/all",
+        "section_primarybt_url": "https://ttab.dev/",
         "section_secondarybt_toggle": true,
         "section_secondarybt_text": "Read about us",
         "section_secondarybt_url": "shopify://pages/about"
@@ -109,7 +109,7 @@
         "news_description": "<p>Stay connected with us and get the inside scoop on new comic releases, exclusive discounts, special events, and much more. By joining our newsletter, you’ll be the first to know about everything happening in the world of comics. We’ll deliver updates directly to your inbox, ensuring you’re always in the loop. Sign up today and make sure you're never left behind on the latest comics, deals, and offers we have in store!</p>",
         "news_image": "shopify://shop_images/mailbox.png",
         "news_primarybt_text": "Join newsletter",
-        "news_primarybt_url": "https://www.google.com"
+        "news_primarybt_url": "https://ttab.dev/"
       }
     },
     "comichive_articles_RUrxFT": {
